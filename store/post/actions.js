@@ -8,9 +8,19 @@ export default {
     console.log('get posts')
     await api.get(URL_POST).then(res => {
       console.log(res)
-      commit('setPosts' , res.data)
+      commit('setPosts', res.data)
     })
 
+  },
+
+  async getSinglePost({
+    commit
+  }, id) {
+    // console.log(id)
+    await api.get(`${URL_POST}/${id}`).then(res => {
+      console.log(res.data)
+      commit('setSinglePost', res.data)
+    })
   }
 
 }
